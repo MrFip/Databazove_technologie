@@ -15,7 +15,22 @@ CREATE TABLE products(
     product_name VARCHAR(100)
 );
 
-CREATE TABLE orders(
+CREATE TABLE orders (
     order_id VARCHAR(20) PRIMARY KEY,
-    customer_id VARCHAR(20)
-)
+    customer_id VARCHAR(20),
+    product_id VARCHAR(20),
+    order_date DATE,
+    ship_date DATE,
+    sales NUMERIC(8,2),
+    quantity INT,
+    discount NUMERIC(8,2),
+    profit NUMERIC(8,2),
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+
+SELECT * FROM customers;
+SELECT * FROM products;
+SELECT * FROM orders;
+SELECT 1;
