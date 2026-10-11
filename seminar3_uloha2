@@ -1,0 +1,15 @@
+CREATE VIEW regional_monthly_sales AS
+SELECT 
+    t1.region,
+    DATE_TRUNC('month', t1.sale_date) AS month,
+    SUM(t1.total_amount) AS monthly_sales
+FROM 
+    flourmills_sales t1
+GROUP BY 
+    t1.region,
+    DATE_TRUNC('month', t1.sale_date);
+
+SELECT * 
+FROM regional_monthly_sales 
+WHERE region = 'West' 
+ORDER BY month;
