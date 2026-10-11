@@ -1,0 +1,11 @@
+CREATE VIEW analyst_orders AS
+SELECT sales_id,
+       customer_id,
+       product_name,
+       total_amount,
+       quantity_sold,
+       discount_rate
+FROM flourmills_sales;
+
+SELECT * 
+FROM analyst_orders;
