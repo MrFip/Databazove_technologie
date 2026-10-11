@@ -1,0 +1,7 @@
+CREATE INDEX IF NOT EXISTS idx_orders_region_category
+ON flourmills_sales(region, sale_date);
+
+SELECT *
+FROM flourmills_sales
+WHERE region = 'West'
+  AND sale_date >= '2024-01-01';
