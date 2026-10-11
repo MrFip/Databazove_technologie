@@ -1,0 +1,12 @@
+CREATE INDEX IF NOT EXISTS idx_orders_order_date
+ON flourmills_sales(sale_date);
+
+SELECT 
+    DATE_TRUNC('month', sale_date) AS month,
+    SUM(total_amount) AS sum
+FROM 
+    flourmills_sales
+GROUP BY 
+    DATE_TRUNC('month', sale_date)
+ORDER BY 
+    month ASC;
