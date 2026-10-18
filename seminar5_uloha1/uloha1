@@ -1,0 +1,35 @@
+-- Active: 1790502193356@@127.0.0.1@5432@uloha1
+WITH customer_orders AS (
+    SELECT DISTINCT
+        c.customer_name,
+        o.customer_id,
+        o.order_id,
+        o.order_date
+    FROM 
+        orders o
+    JOIN 
+        customers c ON o.customer_id = c.customer_id
+),
+ranked_orders AS (
+    SELECT 
+        customer_name,
+        order_id,
+        order_date,
+        ROW_NUMBER() OVER (
+            PARTITION BY customer_id 
+            ORDER BY order_date DESC, order_id DESC
+        ) AS order_rn
+    FROM 
+        customer_orders
+)
+SELECT 
+    customer_name,
+    order_id,
+    order_date
+FROM 
+    ranked_orders
+WHERE 
+    order_rn IN (1, 2)
+ORDER BY 
+    customer_name ASC, 
+    order_rn ASC;
