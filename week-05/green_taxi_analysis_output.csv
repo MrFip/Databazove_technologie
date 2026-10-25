@@ -1,0 +1,6 @@
+payment_type,pocet_jazd,priemerne_sprepitne,max_sprepitne,payment_type_desc
+1.0,36631,3.2516625262755587,110.0,Kreditná karta
+2.0,15899,0.0,0.0,Hotovosť
+3.0,295,0.01088135593220339,1.46,Bez poplatku
+4.0,80,0.0,0.0,Disput
+5.0,1,0.0,0.0,Neznáme
